@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
                         for k, v in to_obj.items():
                             arg = "{} {} {} {}".\
                                  format(cmds[0], cls_id, k, v)
-                        print(arg)
+                            eval("self." + mtd[cmd[0]])(arg)
                     else:
                         print("not dic")
             else:
