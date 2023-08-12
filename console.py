@@ -60,7 +60,11 @@ class HBNBCommand(cmd.Cmd):
             print("*** Unknown syntax:", line)
 
     def do_count(self, arg):
-        """v """
+        """ methode that count the number of the object based on 
+        the class name
+        Args: 
+            arg (str): passing the calss name
+        """
 
         objs = storage.all()
         counter = 0
@@ -87,7 +91,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """ v"""
+        """ Creates a new instance BaseModel,and saves prints its id
+        """
 
         args = arg.split()
         if len(args) != 1:
@@ -100,7 +105,9 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, arg):
-        """v """
+        """ Prints the string representation of 
+        an instances class name and id
+        """
 
         args = arg.split()
         objs = storage.all()
@@ -116,7 +123,9 @@ class HBNBCommand(cmd.Cmd):
             print(objs["{}.{}".format(args[0], args[1])])
 
     def do_destroy(self, arg):
-        """ v"""
+        """ Deletes an instance by the class name and id 
+        (save changes
+        """
 
         args = arg.split()
         objs = storage.all()
@@ -133,7 +142,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """ v"""
+        """ Prints all string representation of the instances *****
+        """
 
         args = arg.split()
         objs = storage.all()
@@ -153,7 +163,7 @@ class HBNBCommand(cmd.Cmd):
             print(objects)
 
     def do_update(self, arg):
-        """ v"""
+        """ Updates an instance based on the class name & id """
 
         args = shlex.split(arg)
         objs = storage.all()
