@@ -5,6 +5,7 @@ from uuid import uuid4
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """Represents the BaseModel class."""
 
