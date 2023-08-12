@@ -1,9 +1,19 @@
 #!/usr/bin/python3
-""" test file"""
+"""
+test
+"""
+import json
+import unittest
+from io import StringIO
+import sys
+captured_output = StringIO()
+sys.stdout = captured_output
 
 
-class TestBaseModel(unittest.TestCase):
-    """class TestBase"""
-    def test_the_id(self):
-        """check the id"""
-        pass
+class BaseModelTestCase(unittest.TestCase):
+    """ class for base test """
+    pass
+
+
+if __name__ == '__main__':
+    unittest.main()
