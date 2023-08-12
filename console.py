@@ -52,7 +52,10 @@ class HBNBCommand(cmd.Cmd):
                                  format(cmds[0], cls_id, k, v)
                             eval("self." + mtd[cmd[0]])(arg)
                     else:
-                        print("not dic")
+                        c = re.findall(r'"([^"]+)"', cmds[1])
+                        arg = "{} {} {} {}".\
+                            format(cmds[0], cls_id, c[1], c[2])
+                        eval("self." + mtd[cmd[0]])(arg)
             else:
                 print("*** Unknown syntax:", line)
         else:
