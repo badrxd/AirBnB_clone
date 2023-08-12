@@ -35,34 +35,33 @@ class HBNBCommand(cmd.Cmd):
         if len(cmds) > 1:
             cmd = cmds[1].split('(')
             if cmd[0] in mtd and cmds[1].endswith(")"):
-                match cmd[0]:
-                    case "all" | "count":
-                        eval("self." + mtd[cmd[0]])(cmds[0])
-                    case "show" | "destroy":
-                        cls_id = cmds[1].split('"')[1] if '"' \
-                                in cmds[1] else "non"
-                        arg = "{} {}".format(cmds[0], cls_id)
-                        eval("self." + mtd[cmd[0]])(arg)
-                    case _:
-                        cheack = re.search(r'\{.*\}', cmds[1])
-                        cls_id = cmds[1].split('"')[1]
-                        if cheack:
-                            to_obj = ast.literal_eval(cheack.group())
-                            for k, v in to_obj.items():
-                                arg = "{} {} {} {}".\
-                                     format(cmds[0], cls_id, k, v)
-                            print(arg)
-                        else:
-                            print("not dic")
+                if cmd[0] == "all" or cmd[0] == "count":
+                    eval("self." + mtd[cmd[0]])(cmds[0])
+                elif cmd[0] == "show" or cmd[0] == "destroy":
+                    cls_id = cmds[1].split('"')[1] if '"' \
+                            in cmds[1] else "non"
+                    arg = "{} {}".format(cmds[0], cls_id)
+                    eval("self." + mtd[cmd[0]])(arg)
+                else:
+                    cheack = re.search(r'\{.*\}', cmds[1])
+                    cls_id = cmds[1].split('"')[1]
+                    if cheack:
+                        to_obj = ast.literal_eval(cheack.group())
+                        for k, v in to_obj.items():
+                            arg = "{} {} {} {}".\
+                                 format(cmds[0], cls_id, k, v)
+                        print(arg)
+                    else:
+                        print("not dic")
             else:
                 print("*** Unknown syntax:", line)
         else:
             print("*** Unknown syntax:", line)
 
     def do_count(self, arg):
-        """ methode that count the number of the object based on 
+        """ methode that count the number of the object based on
         the class name
-        Args: 
+        Args:
             arg (str): passing the calss name
         """
 
@@ -105,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, arg):
-        """ Prints the string representation of 
+        """ Prints the string representation of
         an instances class name and id
         """
 
@@ -123,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
             print(objs["{}.{}".format(args[0], args[1])])
 
     def do_destroy(self, arg):
-        """ Deletes an instance by the class name and id 
+        """ Deletes an instance by the class name and id
         (save changes
         """
 
