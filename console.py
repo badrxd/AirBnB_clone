@@ -181,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
                     pass
             else:
                 if '.' in value and value.split(".")[0].isdigit()\
-                    and value.split(".")[1].isdigit():
+                        and value.split(".")[1].isdigit():
                     value = float(value)
                 elif value.isdigit():
                     value = int(value)
