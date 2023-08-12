@@ -49,8 +49,8 @@ class HBNBCommand(cmd.Cmd):
                         if cheack:
                             to_obj = ast.literal_eval(cheack.group())
                             for k, v in to_obj.items():
-                                arg = "{} {} {} {}".format(cmds[0], cls_id, \
-                                    k, v)
+                                arg = "{} {} {} {}".\
+                                     format(cmds[0], cls_id, k, v)
                             print(arg)
                         else:
                             print("not dic")
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             print("*** Unknown syntax:", line)
 
     def do_count(self, arg):
-        """ """
+        """v """
 
         objs = storage.all()
         counter = 0
@@ -87,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """ """
+        """ v"""
 
         args = arg.split()
         if len(args) != 1:
@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_show(self, arg):
-        """ """
+        """v """
 
         args = arg.split()
         objs = storage.all()
@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
             print(objs["{}.{}".format(args[0], args[1])])
 
     def do_destroy(self, arg):
-        """ """
+        """ v"""
 
         args = arg.split()
         objs = storage.all()
@@ -133,10 +133,11 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """ """
+        """ v"""
 
         args = arg.split()
         objs = storage.all()
+
         if len(arg) > 0 and args[0] not in globals():
             print("** class doesn't exist **")
         elif len(arg) > 0 and args[0] in globals():
@@ -152,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
             print(objects)
 
     def do_update(self, arg):
-        """ """
+        """ v"""
 
         args = shlex.split(arg)
         objs = storage.all()
