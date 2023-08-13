@@ -61,7 +61,7 @@ class FileStorageTestCase(unittest.TestCase):
         stg.name = "badr xd"
         stg2 = FileStorage()
         stg2.new(stg)
-        stg.save()
+        stg2.save()
         FileStorage._FileStorage__objects = {}
         self.assertTrue(len(FileStorage._FileStorage__objects) == 0)
         stg2.reload()
