@@ -4,15 +4,51 @@ test
 """
 import json
 import unittest
-from io import StringIO
-import sys
-captured_output = StringIO()
-sys.stdout = captured_output
+from models.base_model import BaseModel
 
 
 class BaseModelTestCase(unittest.TestCase):
-    """ class for base test """
-    pass
+    """ Unittest for BaseModel class """
+
+    def chek_base_class(self):
+        """ creat object """
+        instance = BaseModel()
+
+    def test_checking_init(self):
+        """ test Class attributes """
+        instance = BaseModel()
+        self.assertTrue(hasattr(instance, "id"))
+        self.assertTrue(hasattr(instance, "updated_at"))
+        self.assertTrue(hasattr(instance, "created_at"))
+        instance.name = "bro"
+        self.assertTrue(hasattr(instance, "name"))
+        self.assertEqual("bro", instance.name)
+
+    def test_checking_save(self):
+        """ testing save methode """
+
+        instance = BaseModel()
+        updated_at = instance.updated_at
+        instance.save()
+        self.assertNotEqual(updated_at, instance.updated_at)
+
+    def test_checking_to_dict(self):
+        """ testing to dict methode """
+
+        instance = BaseModel()
+        dic = instance.to_dict()
+        self.assertIsInstance(dic, dict)
+        self.assertEqual(instance.updated_at.isoformat(), dic["updated_at"])
+        self.assertIn("__class__", dic)
+        self.assertEqual(instance.__class__.__name__, dic["__class__"])
+
+    def test_checking_str(self):
+        """ testing str methode """
+
+        instance = BaseModel()
+        classname = instance.__class__.__name__
+        msg = "[{}] ({}) {}".format(classname, instance.id, instance.__dict__)
+        self.assertEqual(msg, str(instance))
 
 
 if __name__ == '__main__':
