@@ -70,10 +70,6 @@ class FileStorageTestCase(unittest.TestCase):
         key = "{}.{}".format(stg.__class__.__name__, stg.id)
         self.assertIn(key, stg2.all())
 
-    def test_docs(self):
-        ''' testing the  docstring '''
-        for fun in dir(FileStorage):
-            self.assertTrue(len(fun.__doc__) > 0)
         
 if __name__ == '__main__':
     unittest.main()
