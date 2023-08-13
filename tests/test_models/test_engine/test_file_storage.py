@@ -7,10 +7,20 @@ import json
 import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-
+import os
 
 class FileStorageTestCase(unittest.TestCase):
     """ Unittest for FileStorage class """
+
+    def test_file_access(self):
+        ''' test read and write access permissions '''
+
+        read = os.access('models/engine/file_storage.py', os.R_OK)
+        self.assertTrue(read)
+        write = os.access('models/engine/file_storage.py', os.W_OK)
+        self.assertTrue(write)
+        exitt = os.access('models/engine/file_storage.py', os.X_OK)
+        self.assertTrue(exitt)
 
     def test_FileStorage_class(self):
         """ creat object """
