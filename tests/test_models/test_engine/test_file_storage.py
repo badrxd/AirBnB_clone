@@ -55,6 +55,7 @@ class FileStorageTestCase(unittest.TestCase):
         key = "{}.{}".format(stg.__class__.__name__, stg.id)
         self.assertIn(key, objects)
         self.assertEqual(stg.name, objects[key]['name'])
+        self.assertNotEqual(stg.updated_at, objects[key]['updated_at'])
 
     def test_reload(self):
         """ test the reload methode """
