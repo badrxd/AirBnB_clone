@@ -6,6 +6,7 @@ import json
 import unittest
 from models.base_model import BaseModel
 from time import sleep
+from datetime import datetime
 
 
 class BaseModelTestCase(unittest.TestCase):
@@ -33,8 +34,7 @@ class BaseModelTestCase(unittest.TestCase):
         sleep(0.06)
         instance.save()
         self.assertNotEqual(updated_at, instance.updated_at)
-        self.assertLess(updated_at, instance.updated_at)
-
+        self.assertGreater(updated_at, instance.updated_at)
     def test_checking_to_dict(self):
         """ testing to dict methode """
 
