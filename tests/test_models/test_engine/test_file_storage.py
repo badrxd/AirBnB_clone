@@ -22,11 +22,19 @@ class FileStorageTestCase(unittest.TestCase):
         self.assertTrue(write)
         exitt = os.access('models/engine/file_storage.py', os.X_OK)
         self.assertTrue(exitt)
+        try:
+            os.remove(FileStorage._FileStorage__file_path)
+        except FileNotFoundError:
+            pass
 
     def test_FileStorage_class(self):
         """ creat object """
         stg2 = FileStorage()
         self.assertIsInstance(stg2, FileStorage)
+        try:
+            os.remove(FileStorage._FileStorage__file_path)
+        except FileNotFoundError:
+            pass
 
     def test_all_mtd(self):
         """ test the all methode """
@@ -34,6 +42,10 @@ class FileStorageTestCase(unittest.TestCase):
         stg2 = FileStorage()
         self.assertIsInstance(stg2.all(), dict)
         self.assertIsInstance(stg2, FileStorage)
+        try:
+            os.remove(FileStorage._FileStorage__file_path)
+        except FileNotFoundError:
+            pass
 
     def test_new(self):
         """ test the new  methode """
@@ -42,6 +54,10 @@ class FileStorageTestCase(unittest.TestCase):
         stg2 = FileStorage()
         key = "{}.{}".format(stg.__class__.__name__, stg.id)
         self.assertIn(key, stg2.all())
+        try:
+            os.remove(FileStorage._FileStorage__file_path)
+        except FileNotFoundError:
+            pass
 
     def test_save(self):
         """ test the save methode """
@@ -56,6 +72,10 @@ class FileStorageTestCase(unittest.TestCase):
         self.assertIn(key, objects)
         self.assertEqual(stg.name, objects[key]['name'])
         self.assertNotEqual(stg.updated_at, objects[key]['updated_at'])
+        try:
+            os.remove(FileStorage._FileStorage__file_path)
+        except FileNotFoundError:
+            pass
 
     def test_reload(self):
         """ test the reload methode """
@@ -69,6 +89,10 @@ class FileStorageTestCase(unittest.TestCase):
         stg2.reload()
         key = "{}.{}".format(stg.__class__.__name__, stg.id)
         self.assertIn(key, stg2.all())
+        try:
+            os.remove(FileStorage._FileStorage__file_path)
+        except FileNotFoundError:
+            pass
 
 
 if __name__ == '__main__':
