@@ -34,6 +34,7 @@ class BaseModelTestCase(unittest.TestCase):
         sleep(0.06)
         instance.save()
         self.assertGreater(instance.updated_at, updated_at)
+        self.assertLess(updated_at, instance.updated_at)
 
     def test_checking_to_dict(self):
         """ testing to dict methode """
