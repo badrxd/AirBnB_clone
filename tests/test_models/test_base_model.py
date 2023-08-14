@@ -33,7 +33,6 @@ class BaseModelTestCase(unittest.TestCase):
         updated_at = instance.updated_at
         sleep(0.06)
         instance.save()
-        self.assertNotEqual(updated_at, instance.updated_at)
         self.assertGreater(instance.updated_at, updated_at)
 
     def test_checking_to_dict(self):
