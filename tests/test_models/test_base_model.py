@@ -35,6 +35,7 @@ class BaseModelTestCase(unittest.TestCase):
         instance.save()
         self.assertNotEqual(updated_at, instance.updated_at)
         self.assertGreater(updated_at, instance.updated_at)
+
     def test_checking_to_dict(self):
         """ testing to dict methode """
 
