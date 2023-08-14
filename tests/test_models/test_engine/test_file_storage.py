@@ -70,6 +70,6 @@ class FileStorageTestCase(unittest.TestCase):
         key = "{}.{}".format(stg.__class__.__name__, stg.id)
         self.assertIn(key, stg2.all())
 
-        
+
 if __name__ == '__main__':
     unittest.main()
