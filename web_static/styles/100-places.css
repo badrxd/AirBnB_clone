@@ -1,10 +1,11 @@
 .places {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   padding-bottom: 20px;
+  align-items: stretch;
 }
 
 .places h1 {
@@ -80,4 +81,46 @@ footer {
 }
 .user {
   width: 100%;
+}
+
+.places .amenities,
+.places .reviews {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.places .amenities h2,
+.places .reviews h2 {
+  font-size: 16px;
+  border-bottom: #dddddd 1px solid;
+  width: 100%;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.places .amenities ul,
+.places .reviews ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.places .amenities ul li {
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 40px;
+}
+.places .reviews ul h3 {
+  font-size: 14px;
+}
+.places .reviews ul p {
+  font-size: 12px;
+}
+.pet {
+  background-image: url(../images/icon_pets.png);
+}
+.tv {
+  background-image: url(../images/icon_tv.png);
+}
+.wifi {
+  background-image: url(../images/icon_wifi.png);
 }
